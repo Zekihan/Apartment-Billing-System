@@ -6,15 +6,11 @@ public class Apartment {
 	private int numberOfFloors;
 	private int  numberOfFlats;
 
-	public Apartment() {
-		this.numberOfFlats = 0;
-		this.numberOfFloors = 0;
-		this.setApartment(new Flat[numberOfFloors][numberOfFlats]);
-
-	}
 	
 	public Apartment(Flat[][] apartment) {
 		this.setApartment(apartment);
+		this.numberOfFloors = apartment.length;
+		this.numberOfFlats = apartment.length * apartment[0].length;
 	}
 
 	public Flat[][] getApartment() {
