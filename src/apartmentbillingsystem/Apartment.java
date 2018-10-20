@@ -33,7 +33,7 @@ public class Apartment {
 				printable += apartment[i][j];
 			}
 		}
-		return ;
+		return printable;
 	}
 	
 	
