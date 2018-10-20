@@ -4,7 +4,7 @@ public class Apartment {
 
 	private Flat[][] apartment ;
 	private int numberOfFloors;
-	private int  numberOfFlats;
+	private int numberOfFlats;
 
 	
 	public Apartment(Flat[][] apartment) {
