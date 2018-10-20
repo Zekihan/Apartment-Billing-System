@@ -8,7 +8,7 @@ public class Flat {
 	private int flatNo;
 	private int noOfRooms;
 	private int sqrMeter;
-	private ArrayList<Bill> BillList;
+	private ArrayList<Bill> billList;
 	
 	public Flat(String[] flatInfoArr, ArrayList<Bill> BillList) {
 		this.flatId = Integer.parseInt(flatInfoArr[0]);
@@ -16,12 +16,12 @@ public class Flat {
 		this.flatNo = Integer.parseInt(flatInfoArr[2]);
 		this.noOfRooms = Integer.parseInt(flatInfoArr[3]);
 		this.sqrMeter = Integer.parseInt(flatInfoArr[4]);
-		this.BillList = BillList;
+		this.billList = BillList;
 		
 	}
 
 	public ArrayList<Bill> getBillList() {
-		return BillList;
+		return billList;
 	}
 
 	public int getFlatId() {
