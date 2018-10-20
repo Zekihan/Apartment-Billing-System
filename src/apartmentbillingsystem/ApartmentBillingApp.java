@@ -10,7 +10,7 @@ public class ApartmentBillingApp {
 		Apartment ap = apMngr.getApartment();
 		System.out.println(ap.getNumberOfFloors());
 		System.out.println(ap.getApartment()[2][1].getSqrMeter());
-		System.out.println(ap.getApartment()[2][1].getBillList());
+		System.out.println(ap.getApartment()[2][1].getBillList().get(0).getBillId());
 		
 	}
 }
