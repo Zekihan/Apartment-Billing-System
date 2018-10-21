@@ -14,7 +14,7 @@ public class FileIO {
 		this.fileName = fileName;
 	}
 	
-	public String[][] readLines() {
+	public String[][] readCsv() {
 		ArrayList<String[]> lineList = new ArrayList<String[]>();
 		boolean done = false;
 		

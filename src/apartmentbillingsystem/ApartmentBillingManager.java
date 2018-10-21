@@ -12,8 +12,8 @@ public class ApartmentBillingManager {
 		
 		FileIO billInput = new FileIO("HW1-BillingInfo-2018-10-01.csv");
 		FileIO flatInput = new FileIO("HW1-ApartmentInfo.csv");
-		billInputArr = billInput.readLines();
-		flatInputArr = flatInput.readLines();
+		billInputArr = billInput.readCsv();
+		flatInputArr = flatInput.readCsv();
 		
 		int flatNum =Integer.parseInt(flatInputArr[flatInputArr.length-1][0]) ;
 		int floorNum = Integer.parseInt(flatInputArr[flatInputArr.length-1][1]);
@@ -31,11 +31,15 @@ public class ApartmentBillingManager {
 		this.apartment = new Apartment(apartmentArr);
 	}
 	
+	
+	
+	
+	
 	public Apartment getApartment() {
 		return apartment;
 	}
 
-	public ArrayList<Bill> searchBill(int flatNo) {
+	private ArrayList<Bill> searchBill(int flatNo) {
 		ArrayList<Bill> billList = new ArrayList<Bill>();
 		for(int i=0; i< billInputArr.length; i++) {
 			int flatId = Integer.parseInt(billInputArr[i][1]);
@@ -45,5 +49,7 @@ public class ApartmentBillingManager {
 		}
 		return billList;
 	}
+	
+	
 
 }
