@@ -10,8 +10,8 @@ public class ApartmentBillingManager {
 	
 	public ApartmentBillingManager() {
 		
-		FileIO billInput = new FileIO("HW1-BillingInfo-2018-10-01.csv");
-		FileIO flatInput = new FileIO("HW1-ApartmentInfo.csv");
+		FileIO billInput = new FileIO("BillingInfo-2018-10-01.csv");
+		FileIO flatInput = new FileIO("ApartmentInfo.csv");
 		billInputArr = billInput.readCsv();
 		flatInputArr = flatInput.readCsv();
 		
@@ -30,9 +30,6 @@ public class ApartmentBillingManager {
 		}
 		this.apartment = new Apartment(apartmentArr);
 	}
-	
-	
-	
 	
 	
 	public Apartment getApartment() {
