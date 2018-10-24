@@ -44,9 +44,16 @@ public class Bill {
 		return deadlineDate;
 	}
 
+	@Override
+	public String toString() {
+		return "Bill [billId=" + billId + ", flatId=" + flatId + ", amount=" + amount + ", type=" + type + ", isPaid="
+				+ isPaid + ", deadlineDate=" + deadlineDate + ", lastUpdateDate=" + lastUpdateDate + "]";
+	}
+
 	public String getLastUpdateDate() {
 		return lastUpdateDate;
 	}
 	
+
 	
 }

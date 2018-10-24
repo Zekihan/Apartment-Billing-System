@@ -10,8 +10,8 @@ public class ApartmentBillingManager {
 	
 	public ApartmentBillingManager() {
 		
-		FileIO billInput = new FileIO("BillingInfo-2018-10-01.csv");
-		FileIO flatInput = new FileIO("ApartmentInfo.csv");
+		ReadCsv billInput = new ReadCsv("BillingInfo-2018-10-01.csv");
+		ReadCsv flatInput = new ReadCsv("ApartmentInfo.csv");
 		billInputArr = billInput.readCsv();
 		flatInputArr = flatInput.readCsv();
 		

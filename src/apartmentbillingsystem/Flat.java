@@ -44,5 +44,14 @@ public class Flat {
 		return sqrMeter;
 	}
 	
+	public String toString() {
+		StringBuilder str = new StringBuilder();
+		str.append("Flat [flatId=" + flatId + ", floorNo=" + floorNo + ", flatNo=" + flatNo + ", noOfRooms=" + noOfRooms
+				+ ", sqrMeter=" + sqrMeter + ", billList=" + billList + "]");
+		return str.toString();
+		
+		
+	}
+
 	
 }
