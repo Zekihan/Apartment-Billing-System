@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 public class BillQuery {
 	
-	Apartment a;
+	private Apartment a;
 	
 	
 	
@@ -22,7 +22,6 @@ public class BillQuery {
 		for (int i = 0; i < bills.size(); i++) {
 			unpaid += bills.get(i).getAmount();
 		}
-		System.out.println(unpaid);
 		return unpaid;
 	}
 	public double totalUnpaidCertainTypeBill(String type) {
@@ -31,7 +30,6 @@ public class BillQuery {
 		for (int i = 0; i < bills.size(); i++) {
 			unpaid += bills.get(i).getAmount();
 		}
-		System.out.println(unpaid);
 		return unpaid;
 	}
 	public double totalFloorBill(int floor) {
@@ -40,7 +38,6 @@ public class BillQuery {
 		for (int i = 0; i < bills.size(); i++) {
 			total += bills.get(i).getAmount();
 		}
-		System.out.println(total);
 		return total;
 	}
 	public ArrayList<Bill> unpaidRemainingTime(){
@@ -54,39 +51,74 @@ public class BillQuery {
 		}
 		return bills;
 	}
-	public ArrayList<Bill> paidBefore(String date){
+	public double[] paidBefore(String date){
+		double[] aa = new double[2];
+		aa[0] = 0;
+		aa[1] = 0;
 		ArrayList<Bill> bills = getPaid(getBills());
 		for (int i = 0; i < bills.size(); i++) {
-			String deadline = bills.get(i).getDeadlineDate();
-			int rem = timeDiff(deadline,date);
-			if (rem>=0) {
-				System.out.println(bills.get(i).toString()+"Remaining Time"+rem);
+			String update = bills.get(i).getLastUpdateDate();
+			int diff = timeDiff(update,date);
+			if (diff<0) {
+				aa[0] += bills.get(i).getAmount();
+				aa[1]++;
 			}
 		}
-		
-		return bills;
+		return aa;
 		
 	}
-	public ArrayList<Bill> unpaidPassedType(String type){
-		int number = 0;
-		double amount = 0;
+	public double[] unpaidPassedType(String type){
+		double[] aa = new double[2];
+		aa[0] = 0;
+		aa[1] = 0;
 		ArrayList<Bill> bills = getUnpaidType(getBills(),type);
 		for (int i = 0; i < bills.size(); i++) {
 			String deadline = bills.get(i).getDeadlineDate();
 			int rem = timeDiff(deadline,new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime()));
 			if (rem<0) {
-				amount += bills.get(i).getAmount();
-				number++;
+				aa[0] += bills.get(i).getAmount();
+				aa[1]++;
 			}
 		}
-		System.out.println("amount"+amount+"number"+number);
-		return bills;
+		return aa;
 	}
-	public void avgRoomBill(int floor) {
-		System.out.println(getNRoom(getBills(),floor));
+	public double avgRoomBill(int room) {
+		ArrayList<Bill> bills = getBills();
+		double total = 0;
+		int number=0;
+		Flat[][] apartment = a.getApartment();
+		for (int i = 0; i < a.getNumberOfFlats(); i++) {
+			for (int j = 0; j < a.getNumberOfFloors(); j++) {
+				if (apartment[i][j].getNoOfRooms()==(room)) {
+					for (int k = 0; k < apartment[i][j].getBillList().size(); k++) {
+						total += bills.get(i).getAmount();
+						number++;				
+					}
+					
+				}
+				
+			}
+		}
+		return total/number;
 	}
-	public void avgSQBill(int sq) {
-		System.out.println(getSQGreater(getBills(),sq));
+	public double avgSQBill(int sq) {
+		ArrayList<Bill> bills = getBills();
+		double total = 0;
+		int number=0;
+		Flat[][] apartment = a.getApartment();
+		for (int i = 0; i < a.getNumberOfFlats(); i++) {
+			for (int j = 0; j < a.getNumberOfFloors(); j++) {
+				if (apartment[i][j].getSqrMeter()==(sq)) {
+					for (int k = 0; k < apartment[i][j].getBillList().size(); k++) {
+						total += bills.get(i).getAmount();
+						number++;
+					}
+					
+				}
+				
+			}
+		}
+		return total/number;
 	}
 	
 
@@ -164,43 +196,6 @@ public class BillQuery {
 			}
 		}
 		return retFloor;
-	}
-	
-	private double getNRoom(ArrayList<Bill> bills,int room) {
-		double total = 0;
-		int number=0;
-		Flat[][] apartment = a.getApartment();
-		for (int i = 0; i < a.getNumberOfFlats(); i++) {
-			for (int j = 0; j < a.getNumberOfFloors(); j++) {
-				if (apartment[i][j].getNoOfRooms()==(room)) {
-					for (int k = 0; k < apartment[i][j].getBillList().size(); k++) {
-						total += bills.get(i).getAmount();
-						number++;				
-					}
-					
-				}
-				
-			}
-		}
-		return total/number;
-	}
-	private double getSQGreater(ArrayList<Bill> bills,int sq) {
-		double total = 0;
-		int number=0;
-		Flat[][] apartment = a.getApartment();
-		for (int i = 0; i < a.getNumberOfFlats(); i++) {
-			for (int j = 0; j < a.getNumberOfFloors(); j++) {
-				if (apartment[i][j].getSqrMeter()==(sq)) {
-					for (int k = 0; k < apartment[i][j].getBillList().size(); k++) {
-						total += bills.get(i).getAmount();
-						number++;
-					}
-					
-				}
-				
-			}
-		}
-		return total/number;
 	}
 	
 
