@@ -44,14 +44,18 @@ public class Bill {
 		return deadlineDate;
 	}
 
-	@Override
-	public String toString() {
-		return "Bill [billId=" + billId + ", flatId=" + flatId + ", amount=" + amount + ", type=" + type + ", isPaid="
-				+ isPaid + ", deadlineDate=" + deadlineDate + ", lastUpdateDate=" + lastUpdateDate + "]";
-	}
-
 	public String getLastUpdateDate() {
 		return lastUpdateDate;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Bill [billId=").append(billId).append(", flatId=").append(flatId).append(", amount=")
+				.append(amount).append(", type=").append(type).append(", isPaid=").append(isPaid)
+				.append(", deadlineDate=").append(deadlineDate).append(", lastUpdateDate=").append(lastUpdateDate)
+				.append("]");
+		return builder.toString();
 	}
 	
 

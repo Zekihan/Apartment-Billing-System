@@ -43,14 +43,14 @@ public class Flat {
 	public int getSqrMeter() {
 		return sqrMeter;
 	}
-	
+
+	@Override
 	public String toString() {
-		StringBuilder str = new StringBuilder();
-		str.append("Flat [flatId=" + flatId + ", floorNo=" + floorNo + ", flatNo=" + flatNo + ", noOfRooms=" + noOfRooms
-				+ ", sqrMeter=" + sqrMeter + ", billList=" + billList + "]");
-		return str.toString();
-		
-		
+		StringBuilder builder = new StringBuilder();
+		builder.append("Flat [flatId=").append(flatId).append(", floorNo=").append(floorNo).append(", flatNo=")
+				.append(flatNo).append(", noOfRooms=").append(noOfRooms).append(", sqrMeter=").append(sqrMeter)
+				.append(", billList=").append(billList).append("]");
+		return builder.toString();
 	}
 
 	
