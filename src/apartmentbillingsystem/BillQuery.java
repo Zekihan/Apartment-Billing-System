@@ -10,12 +10,12 @@ import java.util.concurrent.TimeUnit;
 public class BillQuery {
 	
 	private Apartment a;
-	
-	
+
 	
 	public BillQuery(Apartment a) {
 		this.a = a;
 	}
+	
 	public double totalUnpaidBill() {
 		double unpaid=0;
 		ArrayList<Bill> bills = getUnpaid(getBills());
@@ -24,6 +24,7 @@ public class BillQuery {
 		}
 		return unpaid;
 	}
+	
 	public double totalUnpaidCertainTypeBill(String type) {
 		double unpaid=0;
 		ArrayList<Bill> bills = getUnpaidType(getBills(), type);
@@ -32,6 +33,7 @@ public class BillQuery {
 		}
 		return unpaid;
 	}
+	
 	public double totalFloorBill(int floor) {
 		double total=0;
 		ArrayList<Bill> bills = getFloor(getBills(),floor);
@@ -40,6 +42,7 @@ public class BillQuery {
 		}
 		return total;
 	}
+	
 	public ArrayList<Bill> unpaidRemainingTime(){
 		ArrayList<Bill> bills = getUnpaid(getBills());
 		for (int i = 0; i < bills.size(); i++) {
@@ -51,6 +54,7 @@ public class BillQuery {
 		}
 		return bills;
 	}
+	
 	public double[] paidBefore(String date){
 		double[] aa = new double[2];
 		aa[0] = 0;
@@ -65,8 +69,8 @@ public class BillQuery {
 			}
 		}
 		return aa;
-		
 	}
+	
 	public double[] unpaidPassedType(String type){
 		double[] aa = new double[2];
 		aa[0] = 0;
@@ -82,6 +86,7 @@ public class BillQuery {
 		}
 		return aa;
 	}
+	
 	public double avgRoomBill(int room) {
 		double total = 0;
 		int number=0;
@@ -92,15 +97,13 @@ public class BillQuery {
 					for (int k = 0; k < apartment[i][j].getBillList().size(); k++) {
 						total += apartment[i][j].getBillList().get(k).getAmount();
 						number++;
-						
 					}
-					
 				}
-				
 			}
 		}
 		return total/number;
 	}
+	
 	public double avgSQBill(int sq) {
 		double total = 0;
 		int number=0;
@@ -112,16 +115,12 @@ public class BillQuery {
 						total += apartment[i][j].getBillList().get(k).getAmount();
 						number++;
 					}
-					
 				}
-				
 			}
 		}
 		return total/number;
 	}
-	
 
-	
 	private int timeDiff(String firstDate,String secondDate) {
 		int diffDays=0;
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -196,6 +195,4 @@ public class BillQuery {
 		}
 		return retFloor;
 	}
-	
-
 }

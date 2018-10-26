@@ -17,9 +17,8 @@ public class Flat {
 		this.noOfRooms = Integer.parseInt(flatInfoArr[3]);
 		this.sqrMeter = Integer.parseInt(flatInfoArr[4]);
 		this.billList = BillList;
-		
 	}
-
+	
 	public ArrayList<Bill> getBillList() {
 		return billList;
 	}
@@ -52,6 +51,4 @@ public class Flat {
 				.append(", billList=").append(billList).append("]");
 		return builder.toString();
 	}
-
-	
 }

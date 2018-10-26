@@ -4,13 +4,16 @@ import java.util.Scanner;
 
 public class ConsoleView {
 	
+	private Apartment a;
 	private BillQuery bquery;
 	
 	
 	public ConsoleView(Apartment a) {
+		this.a = a;
 		this.bquery = new BillQuery(a);
 	}
 
+	@SuppressWarnings("resource")
 	public String[] menu() {
 		Scanner keyboard = new Scanner(System.in);
 		System.out.println("You can choose from the following menu");
@@ -46,23 +49,30 @@ public class ConsoleView {
 		default:
 			break;
 		}
-
 		return null;
-		
-	}
-	
-	public void paymentInfo(int billId, boolean isPaid) {
-		
 	}
 	
 	public void listAllBills() {
-		
+		Flat[][] apartment = a.getApartment();
+		for (int i = 0; i < a.getNumberOfFloors(); i++) {
+			for (int j = 0; j < a.getNumberOfFlats(); j++) {
+				for (int k = 0; k < apartment[i][j].getBillList().size(); k++) {
+					System.out.println(apartment[i][j].getBillList().get(k));
+				}
+			}	
+		}
 	}
 
 	public void listAllFlats() {
-		
+		Flat[][] apartment = a.getApartment();
+		for (int i = 0; i < a.getNumberOfFloors(); i++) {
+			for (int j = 0; j < a.getNumberOfFlats(); j++) {
+				System.out.println(apartment[i][j]);
+			}		
+		}
 	}
 
+	@SuppressWarnings("resource")
 	public void query() {
 		Scanner keyboard = new Scanner(System.in);
 		System.out.println("Please select a query :");
@@ -109,7 +119,6 @@ public class ConsoleView {
 		default:
 			break;
 		}
-
 	}
 
 	private void queryMethods() {
@@ -164,7 +173,4 @@ public class ConsoleView {
 		double avg = bquery.avgSQBill(sq);
 		System.out.println("Average total amount of bills of flats with square meter greater than "+ sq +" is "+String.format("%.2f",avg));
 	}
-
-	
-	
 }

@@ -6,8 +6,6 @@ public class ApartmentBillingApp {
 
 		ApartmentBillingManager apartBillMngr = new ApartmentBillingManager();	
 		apartBillMngr.start();
-		
 
-		
 	}
 }

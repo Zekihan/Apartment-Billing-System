@@ -47,7 +47,4 @@ public class StoredDate {
 	public String getDate() {
 		return date;
 	}
-	
-	
-	
 }

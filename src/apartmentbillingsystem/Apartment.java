@@ -17,25 +17,16 @@ public class Apartment {
 		return apartment;
 	}
 
-	public void setApartment(Flat[][] apartment) {
+	private void setApartment(Flat[][] apartment) {
 		this.apartment = apartment;
 	}
-	
 
 	public int getNumberOfFloors() {
 		return numberOfFloors;
 	}
 
-	public void setNumberOfFloors(int numberOfFloors) {
-		this.numberOfFloors = numberOfFloors;
-	}
-
 	public int getNumberOfFlats() {
 		return numberOfFlats;
-	}
-
-	public void setNumberOfFlats(int numberOfFlats) {
-		this.numberOfFlats = numberOfFlats;
 	}
 
 	@Override

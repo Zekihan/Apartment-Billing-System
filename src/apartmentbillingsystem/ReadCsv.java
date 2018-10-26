@@ -46,9 +46,4 @@ public class ReadCsv {
 			String[][] lineArr = lineList.toArray(new String[lineList.size()][lineList.get(0).length]);
 			return lineArr;
 	}
-
-	
-	
-	
-	
 }

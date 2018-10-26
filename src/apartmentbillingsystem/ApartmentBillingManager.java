@@ -29,14 +29,10 @@ public class ApartmentBillingManager {
 				changePaymentInfo(billId, isPaid);
 				view = new ConsoleView(getApartment());
 			}
-			
 			view.menu();
 		}
-
 	}
-	
-	
-	
+
 	public Apartment getApartment() {
 		return apartment;
 	}
@@ -51,7 +47,6 @@ public class ApartmentBillingManager {
 		int flatNum =Integer.parseInt(flatInputArr[flatInputArr.length-1][0]) ;
 		int floorNum = Integer.parseInt(flatInputArr[flatInputArr.length-1][1]);
 		int flatPerFloor = flatNum/floorNum;
-		
 		
 		Flat[][] apartmentArr = new Flat[floorNum][flatPerFloor];
 		int flatNo = 0;
@@ -73,16 +68,13 @@ public class ApartmentBillingManager {
 				} else {
 					billInputArr[i][4] = "false";
 				}
-				
 				billInputArr[i][6] = date;
 				
 				UpdateCsv up = new UpdateCsv(billInputArr, lastUpdateDate);
 				up.updateCsv();
 				StoredDate storeDate = new StoredDate();
 				storeDate.updateDate(date);
-				
-				
-				
+
 				createApartment(date);
 			}
 		}
@@ -97,9 +89,4 @@ public class ApartmentBillingManager {
 		}
 		return billList;
 	}
-	
-
-	
-	
-
 }
