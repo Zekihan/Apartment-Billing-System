@@ -17,7 +17,8 @@ public class ConsoleView {
 		System.out.println("1) For changing the PaymentInfo of a bill\n"
 				+ "2) List all bills\n"
 				+ "3) List all flats\n"
-				+ "4) For executing queries");
+				+ "4) For executing queries\n"
+				+ "5) Exit");
 		System.out.println("Please enter a number from list above(press enter at the end) :");
 		String a = keyboard.next();
 		switch (a) {
@@ -38,7 +39,9 @@ public class ConsoleView {
 			queryMethods();
 			query();
 			break;
-
+		case "5":
+			System.exit(1);
+			break;
 		default:
 			break;
 		}
@@ -136,7 +139,7 @@ public class ConsoleView {
 	private void paidBefore(String date) {
 		double[] aa = bquery.paidBefore(date);
 		System.out.println("Number of paid bills before a certain date is "+(int)aa[1]);
-		System.out.printf("Total amount of paid bills before a certain date is "+String.format("%.2f",aa[0]));
+		System.out.println("Total amount of paid bills before a certain date is "+String.format("%.2f",aa[0]));
 	}
 	private void unpaidPassedType(String type){
 		double[] aa = bquery.unpaidPassedType(type);

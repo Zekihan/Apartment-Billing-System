@@ -87,12 +87,13 @@ public class BillQuery {
 		double total = 0;
 		int number=0;
 		Flat[][] apartment = a.getApartment();
-		for (int i = 0; i < a.getNumberOfFlats(); i++) {
-			for (int j = 0; j < a.getNumberOfFloors(); j++) {
+		for (int i = 0; i < a.getNumberOfFloors(); i++) {
+			for (int j = 0; j < a.getNumberOfFlats(); j++) {
 				if (apartment[i][j].getNoOfRooms()==(room)) {
 					for (int k = 0; k < apartment[i][j].getBillList().size(); k++) {
-						total += bills.get(k).getAmount();
-						number++;				
+						total += apartment[i][j].getBillList().get(k).getAmount();
+						number++;
+						
 					}
 					
 				}
@@ -106,11 +107,11 @@ public class BillQuery {
 		double total = 0;
 		int number=0;
 		Flat[][] apartment = a.getApartment();
-		for (int i = 0; i < a.getNumberOfFlats(); i++) {
-			for (int j = 0; j < a.getNumberOfFloors(); j++) {
+		for (int i = 0; i < a.getNumberOfFloors(); i++) {
+			for (int j = 0; j < a.getNumberOfFlats(); j++) {
 				if (apartment[i][j].getSqrMeter()==(sq)) {
 					for (int k = 0; k < apartment[i][j].getBillList().size(); k++) {
-						total += bills.get(k).getAmount();
+						total += apartment[i][j].getBillList().get(k).getAmount();
 						number++;
 					}
 					
@@ -189,7 +190,6 @@ public class BillQuery {
 				if (apartment[i][j].getFloorNo()==(floor)) {
 					for (int k = 0; k < apartment[i][j].getBillList().size(); k++) {
 						retFloor.add(apartment[i][j].getBillList().get(k));
-						System.out.println(apartment[i][j].getBillList().get(k));
 					}
 					
 				}
