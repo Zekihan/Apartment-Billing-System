@@ -12,6 +12,10 @@ public class ApartmentBillingManager {
 	private Apartment apartment;
 	
 	public ApartmentBillingManager() {
+		
+	}
+	
+	public void start() {
 		StoredDate storedDate = new StoredDate();
 		String date = storedDate.readDate();
 		createApartment(date);
@@ -30,6 +34,7 @@ public class ApartmentBillingManager {
 		}
 
 	}
+	
 	
 	
 	public Apartment getApartment() {
