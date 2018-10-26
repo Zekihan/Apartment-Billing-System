@@ -11,9 +11,9 @@ public class UpdateCsv {
 	private String[][] lineArr;
 	private String oldFileName;
 
-	public UpdateCsv(String[][] lineArr, String oldFileName) {
+	public UpdateCsv(String[][] lineArr, String lastUpdateDate) {
 		this.lineArr = lineArr;
-		this.oldFileName = oldFileName;	
+		this.oldFileName = "BillingInfo-" + lastUpdateDate + ".csv";	
 	}
 	
 	public void updateCsv() {

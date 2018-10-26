@@ -1,19 +1,34 @@
 package apartmentbillingsystem;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class ApartmentBillingManager {
 	
+	private String lastUpdateDate;
 	private String[][] billInputArr;
 	private String[][] flatInputArr;
 	private Apartment apartment;
 	
 	public ApartmentBillingManager() {
+		createApartment("2018-10-01");
+
 		
-		ReadCsv billInput = new ReadCsv("BillingInfo-2018-10-01.csv");
+
+	}
+	
+	
+	public Apartment getApartment() {
+		return apartment;
+	}
+	
+	private void createApartment(String lastUpdateDate) {
+		this.lastUpdateDate = lastUpdateDate;
+		ReadCsv billInput = new ReadCsv("BillingInfo-" + lastUpdateDate + ".csv");
 		ReadCsv flatInput = new ReadCsv("ApartmentInfo.csv");
-		billInputArr = billInput.readCsv();
-		flatInputArr = flatInput.readCsv();
+		this.billInputArr = billInput.readCsv();
+		this.flatInputArr = flatInput.readCsv();
 		
 		int flatNum =Integer.parseInt(flatInputArr[flatInputArr.length-1][0]) ;
 		int floorNum = Integer.parseInt(flatInputArr[flatInputArr.length-1][1]);
@@ -30,12 +45,20 @@ public class ApartmentBillingManager {
 		}
 		this.apartment = new Apartment(apartmentArr);
 	}
-	
-	
-	public Apartment getApartment() {
-		return apartment;
-	}
 
+	public void payBill(int billId) {
+		for(int i = 0; i < billInputArr.length; i++) {
+			if(Integer.parseInt(billInputArr[i][0]) == billId) {
+				String date = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
+				billInputArr[i][4] = "True";
+				billInputArr[i][6] = date;
+				UpdateCsv up = new UpdateCsv(billInputArr, lastUpdateDate);
+				up.updateCsv();
+				createApartment(date);
+				
+			}
+		}
+	}
 	private ArrayList<Bill> searchBill(int flatNo) {
 		ArrayList<Bill> billList = new ArrayList<Bill>();
 		for(int i=0; i< billInputArr.length; i++) {
@@ -46,6 +69,8 @@ public class ApartmentBillingManager {
 		}
 		return billList;
 	}
+	
+
 	
 	
 
