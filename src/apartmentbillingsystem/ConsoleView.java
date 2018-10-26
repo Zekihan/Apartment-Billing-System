@@ -11,23 +11,24 @@ public class ConsoleView {
 		this.bquery = new BillQuery(a);
 	}
 
-	public void menu() {
+	public String[] menu() {
 		Scanner keyboard =new Scanner(System.in);
 		System.out.println("You can choose from the following menu");
-		System.out.println("1) For changing the PaymentInfo of a bill//r//n"
-				+ "2) List all bills//r//n"
-				+ "3) List all flats//r//n"
+		System.out.println("1) For changing the PaymentInfo of a bill\n"
+				+ "2) List all bills\n"
+				+ "3) List all flats\n"
 				+ "4) For executing queries");
 		System.out.println("Please enter a number from list above(press enter at the end) :");
 		String a = keyboard.next();
 		switch (a) {
 		case "1":
 			System.out.println("Please enter ID of the bill that you want change payment info (At the end press enter) :");
-			int billId = Integer.parseInt(keyboard.next());
+			String billId = keyboard.next();
 			System.out.println("Enter payment info (True or False) (At the end press enter) :");
-			boolean isPaid = Boolean.parseBoolean(keyboard.next());
-			paymentInfo(billId, isPaid);
-			break;
+			String isPaid = keyboard.next();
+			String[] params = {billId, isPaid};
+			keyboard.close();
+			return params;
 		case "2":
 			listAllBills();
 			break;
@@ -43,6 +44,8 @@ public class ConsoleView {
 			break;
 		}
 		keyboard.close();
+		return null;
+		
 	}
 	
 	public void paymentInfo(int billId, boolean isPaid) {

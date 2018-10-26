@@ -14,7 +14,18 @@ public class ApartmentBillingManager {
 	public ApartmentBillingManager() {
 		createApartment("2018-10-01");
 		ConsoleView view = new ConsoleView(getApartment());
-		view.menu();
+		boolean done = false;
+		while(!done) {
+			String[] paramsToChangePaymentInfo = view.menu();
+			if(paramsToChangePaymentInfo != null) {
+				int billId = Integer.parseInt(paramsToChangePaymentInfo[0]);
+				boolean isPaid = Boolean.parseBoolean(paramsToChangePaymentInfo[1]);
+				changePaymentInfo(billId, isPaid);
+				
+			}
+			
+			view.menu();
+		}
 
 	}
 	
