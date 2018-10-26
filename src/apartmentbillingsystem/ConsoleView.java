@@ -40,6 +40,7 @@ public class ConsoleView {
 			query();
 			break;
 		case "5":
+			keyboard.close();
 			System.exit(1);
 			break;
 		default:
@@ -110,6 +111,7 @@ public class ConsoleView {
 		}
 
 	}
+
 	private void queryMethods() {
 		System.out.println("The following items are the list of all queries");
 		System.out.println("1) Total amount of unpaid bills\n"
