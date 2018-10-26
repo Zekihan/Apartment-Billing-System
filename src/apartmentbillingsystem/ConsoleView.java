@@ -42,10 +42,7 @@ public class ConsoleView {
 		default:
 			break;
 		}
-<<<<<<< HEAD
-=======
-		
->>>>>>> dc992addd58370efc4c67c4cee89ba31c4410db2
+
 		return null;
 		
 	}
@@ -107,10 +104,7 @@ public class ConsoleView {
 		default:
 			break;
 		}
-<<<<<<< HEAD
-=======
-		
->>>>>>> dc992addd58370efc4c67c4cee89ba31c4410db2
+
 	}
 	private void queryMethods() {
 		System.out.println("The following items are the list of all queries");
