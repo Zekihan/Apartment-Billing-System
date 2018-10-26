@@ -21,12 +21,9 @@ public class ApartmentBillingManager {
 				int billId = Integer.parseInt(paramsToChangePaymentInfo[0]);
 				boolean isPaid = Boolean.parseBoolean(paramsToChangePaymentInfo[1]);
 				changePaymentInfo(billId, isPaid);
-				
 			}
-			
 			view.menu();
 		}
-
 	}
 	
 	
@@ -84,9 +81,4 @@ public class ApartmentBillingManager {
 		}
 		return billList;
 	}
-	
-
-	
-	
-
 }

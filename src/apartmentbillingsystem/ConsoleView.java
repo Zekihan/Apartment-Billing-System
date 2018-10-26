@@ -43,7 +43,6 @@ public class ConsoleView {
 		default:
 			break;
 		}
-		keyboard.close();
 		return null;
 		
 	}
@@ -84,6 +83,7 @@ public class ConsoleView {
 		case "5":
 			System.out.println("Please enter a date(At the end press enter and date format shoul be (yyyy-MM-dd) :");
 			String date = keyboard.next();
+			System.out.println(date);
 			paidBefore(date);
 			break;
 		case "6":
@@ -104,52 +104,51 @@ public class ConsoleView {
 		default:
 			break;
 		}
-		keyboard.close();
 	}
 	private void queryMethods() {
 		System.out.println("The following items are the list of all queries");
-		System.out.println("1) Total amount of unpaid bills"
-				+"2) Total amount of unpaid bills of a certain bill type"
-				+"3) Total bill amount of a certain floor"
-				+"4) List of the unpaid bills with the information of the remaining time (in days) before their deadlines"
-				+"5) Total amount and number of paid bills before a certain date"
-				+"6) Total amount and number of unpaid bills of a certain type that passed deadline"
-				+"7) Average total amount of bills of N room flats"
-				+"8) Average total amount of bills of flats with square meter greater than N");
+		System.out.println("1) Total amount of unpaid bills\n"
+				+"2) Total amount of unpaid bills of a certain bill type\n"
+				+"3) Total bill amount of a certain floor\n"
+				+"4) List of the unpaid bills with the information of the remaining time (in days) before their deadlines\n"
+				+"5) Total amount and number of paid bills before a certain date\n"
+				+"6) Total amount and number of unpaid bills of a certain type that passed deadline\n"
+				+"7) Average total amount of bills of N room flats\n"
+				+"8) Average total amount of bills of flats with square meter greater than N\n");
 	}
 	private void totalUnpaidBill() {
 		double total = bquery.totalUnpaidBill();
-		System.out.println("Total amount of unpaid bills is "+total);
+		System.out.println("Total amount of unpaid bills is "+String.format("%.2f",total));
 	}
 	private void totalUnpaidCertainTypeBill(String type) {
 		double total = bquery.totalUnpaidCertainTypeBill(type);
-		System.out.println("Total amount of unpaid bills of a certain bill type is "+total);
+		System.out.println("Total amount of unpaid bills of a certain bill type is "+String.format("%.2f",total));
 	}
 	private void totalFloorBill(int floor) {
 		double total = bquery.totalFloorBill(floor);
-		System.out.println("Total bill amount of a certain floor is "+total);
+		System.out.println("Total bill amount of a certain floor is "+String.format("%.2f",total));
 	}
 	private void unpaidRemainingTime() {
-		System.out.println("List of the unpaid bills with the information of the remaining time (in days)\\r\\n before their deadlines are as following:");
+		System.out.println("List of the unpaid bills with the information of the remaining time (in days) before their deadlines are as following:");
 		bquery.unpaidRemainingTime();
 	}
 	private void paidBefore(String date) {
 		double[] aa = bquery.paidBefore(date);
-		System.out.println("Number of paid bills before a certain date is "+aa[1]);
-		System.out.println("Total amount of paid bills before a certain date is "+aa[0]);
+		System.out.println("Number of paid bills before a certain date is "+(int)aa[1]);
+		System.out.printf("Total amount of paid bills before a certain date is "+String.format("%.2f",aa[0]));
 	}
 	private void unpaidPassedType(String type){
 		double[] aa = bquery.unpaidPassedType(type);
-		System.out.println("Number of unpaid bills of a certain type that passed deadline is "+aa[1]);
-		System.out.println("Total amount of unpaid bills of a certain type that passed deadline is "+aa[0]);
+		System.out.println("Number of unpaid bills of a certain type that passed deadline is "+(int)aa[1]);
+		System.out.println("Total amount of unpaid bills of a certain type that passed deadline is "+String.format("%.2f",aa[0]));
 	}
 	private void avgRoomBill(int room) {
 		double avg = bquery.avgRoomBill(room);
-		System.out.println("Average total amount of bills of "+ room +" room flats is "+avg);
+		System.out.println("Average total amount of bills of "+ room +" room flats is "+String.format("%.2f",avg));
 	}
 	private void avgSQBill(int sq) {
 		double avg = bquery.avgSQBill(sq);
-		System.out.println("Average total amount of bills of flats with square meter greater than "+ sq +" is "+avg);
+		System.out.println("Average total amount of bills of flats with square meter greater than "+ sq +" is "+String.format("%.2f",avg));
 	}
 
 	

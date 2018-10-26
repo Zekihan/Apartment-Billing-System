@@ -46,7 +46,7 @@ public class BillQuery {
 			String deadline = bills.get(i).getDeadlineDate();
 			int rem = timeDiff(deadline,new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime()));
 			if (rem>=0) {
-				System.out.println(bills.get(i).toString()+"Remaining Time"+rem);
+				System.out.println(bills.get(i).toString()+" Remaining Time :"+rem);
 			}
 		}
 		return bills;
@@ -91,7 +91,7 @@ public class BillQuery {
 			for (int j = 0; j < a.getNumberOfFloors(); j++) {
 				if (apartment[i][j].getNoOfRooms()==(room)) {
 					for (int k = 0; k < apartment[i][j].getBillList().size(); k++) {
-						total += bills.get(i).getAmount();
+						total += bills.get(k).getAmount();
 						number++;				
 					}
 					
@@ -110,7 +110,7 @@ public class BillQuery {
 			for (int j = 0; j < a.getNumberOfFloors(); j++) {
 				if (apartment[i][j].getSqrMeter()==(sq)) {
 					for (int k = 0; k < apartment[i][j].getBillList().size(); k++) {
-						total += bills.get(i).getAmount();
+						total += bills.get(k).getAmount();
 						number++;
 					}
 					
@@ -184,11 +184,12 @@ public class BillQuery {
 	private ArrayList<Bill> getFloor(ArrayList<Bill> bills, int floor) {
 		ArrayList<Bill> retFloor = new ArrayList<Bill>();
 		Flat[][] apartment = a.getApartment();
-		for (int i = 0; i < a.getNumberOfFlats(); i++) {
-			for (int j = 0; j < a.getNumberOfFloors(); j++) {
-				if (apartment[i][j].getFloorNo()==(floor-1)) {
+		for (int i = 0; i < a.getNumberOfFloors(); i++) {
+			for (int j = 0; j < a.getNumberOfFlats(); j++) {
+				if (apartment[i][j].getFloorNo()==(floor)) {
 					for (int k = 0; k < apartment[i][j].getBillList().size(); k++) {
-						retFloor.add(bills.get(i));					
+						retFloor.add(apartment[i][j].getBillList().get(k));
+						System.out.println(apartment[i][j].getBillList().get(k));
 					}
 					
 				}
