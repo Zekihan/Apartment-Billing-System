@@ -72,6 +72,7 @@ public class ConsoleView {
 			break;
 		case "2":
 			System.out.println("Please enter a type(At the end press enter) :");
+			types();
 			String type = keyboard.next();
 			totalUnpaidCertainTypeBill(type);
 			break;
@@ -90,6 +91,7 @@ public class ConsoleView {
 			break;
 		case "6":
 			System.out.println("Please enter a type(At the end press enter) :");
+			types();
 			String type1 = keyboard.next();
 			unpaidPassedType(type1);
 			break;
@@ -118,6 +120,13 @@ public class ConsoleView {
 				+"6) Total amount and number of unpaid bills of a certain type that passed deadline\n"
 				+"7) Average total amount of bills of N room flats\n"
 				+"8) Average total amount of bills of flats with square meter greater than N\n");
+	}
+	private void types() {
+		System.out.println("The following items are the list of all types");
+		System.out.println("cleaning\n"
+				+"electric\n"
+				+"heating\n"
+				+ "water\n");
 	}
 	private void totalUnpaidBill() {
 		double total = bquery.totalUnpaidBill();
