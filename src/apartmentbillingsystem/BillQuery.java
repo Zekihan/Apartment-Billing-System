@@ -144,8 +144,8 @@ public class BillQuery {
 	private ArrayList<Bill> getBills() {
 		Flat[][] apartment = a.getApartment();
 		ArrayList<Bill> bills = new ArrayList<Bill>();
-		for (int i = 0; i < a.getNumberOfFlats(); i++) {
-			for (int j = 0; j < a.getNumberOfFloors(); j++) {
+		for (int i = 0; i < a.getNumberOfFloors(); i++) {
+			for (int j = 0; j < a.getNumberOfFlats(); j++) {
 				for (int k = 0; k < apartment[i][j].getBillList().size(); k++) {
 					bills.add(apartment[i][j].getBillList().get(k));
 				}

@@ -13,7 +13,7 @@ public class ConsoleView {
 
 	public void menu() {
 		Scanner keyboard =new Scanner(System.in);
-		System.out.println("You can chose from the following menu");
+		System.out.println("You can choose from the following menu");
 		System.out.println("1) For changing the PaymentInfo of a bill//r//n"
 				+ "2) List all bills//r//n"
 				+ "3) List all flats//r//n"
@@ -22,7 +22,11 @@ public class ConsoleView {
 		String a = keyboard.next();
 		switch (a) {
 		case "1":
-			paymentInfo();
+			System.out.println("Please enter ID of the bill that you want change payment info (At the end press enter) :");
+			int billId = Integer.parseInt(keyboard.next());
+			System.out.println("Enter payment info (True or False) (At the end press enter) :");
+			boolean isPaid = Boolean.parseBoolean(keyboard.next());
+			paymentInfo(billId, isPaid);
 			break;
 		case "2":
 			listAllBills();
@@ -41,7 +45,7 @@ public class ConsoleView {
 		keyboard.close();
 	}
 	
-	public void paymentInfo() {
+	public void paymentInfo(int billId, boolean isPaid) {
 		
 	}
 	

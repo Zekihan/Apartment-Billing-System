@@ -10,7 +10,7 @@ public class Apartment {
 	public Apartment(Flat[][] apartment) {
 		this.setApartment(apartment);
 		this.numberOfFloors = apartment.length;
-		this.numberOfFlats = apartment.length * apartment[0].length;
+		this.numberOfFlats = apartment[0].length;
 	}
 
 	public Flat[][] getApartment() {

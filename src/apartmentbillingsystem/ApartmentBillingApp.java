@@ -6,7 +6,7 @@ public class ApartmentBillingApp {
 
 		ApartmentBillingManager apMngr = new ApartmentBillingManager();	
 		Apartment ap = apMngr.getApartment();
-
+		
 
 		
 	}

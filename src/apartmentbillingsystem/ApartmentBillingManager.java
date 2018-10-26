@@ -13,8 +13,8 @@ public class ApartmentBillingManager {
 	
 	public ApartmentBillingManager() {
 		createApartment("2018-10-01");
-
-		
+		ConsoleView view = new ConsoleView(getApartment());
+		view.menu();
 
 	}
 	
@@ -46,16 +46,20 @@ public class ApartmentBillingManager {
 		this.apartment = new Apartment(apartmentArr);
 	}
 
-	public void payBill(int billId) {
+	public void changePaymentInfo(int billId, boolean isPaid) {
 		for(int i = 0; i < billInputArr.length; i++) {
 			if(Integer.parseInt(billInputArr[i][0]) == billId) {
 				String date = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
-				billInputArr[i][4] = "True";
+				if (isPaid) {
+					billInputArr[i][4] = "True";
+				} else {
+					billInputArr[i][4] = "False";
+				}
+				
 				billInputArr[i][6] = date;
 				UpdateCsv up = new UpdateCsv(billInputArr, lastUpdateDate);
 				up.updateCsv();
-				createApartment(date);
-				
+				createApartment(date);		
 			}
 		}
 	}
