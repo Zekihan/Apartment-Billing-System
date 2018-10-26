@@ -12,7 +12,7 @@ public class ConsoleView {
 	}
 
 	public String[] menu() {
-		Scanner keyboard =new Scanner(System.in);
+		Scanner keyboard = new Scanner(System.in);
 		System.out.println("You can choose from the following menu");
 		System.out.println("1) For changing the PaymentInfo of a bill\n"
 				+ "2) List all bills\n"
@@ -27,7 +27,7 @@ public class ConsoleView {
 			System.out.println("Enter payment info (True or False) (At the end press enter) :");
 			String isPaid = keyboard.next();
 			String[] params = {billId, isPaid};
-			keyboard.close();
+			
 			return params;
 		case "2":
 			listAllBills();
@@ -43,7 +43,7 @@ public class ConsoleView {
 		default:
 			break;
 		}
-		keyboard.close();
+		
 		return null;
 		
 	}
@@ -61,7 +61,7 @@ public class ConsoleView {
 	}
 
 	public void query() {
-		Scanner keyboard =new Scanner(System.in);
+		Scanner keyboard = new Scanner(System.in);
 		System.out.println("Please select a query :");
 		String query = keyboard.next();
 		switch (query) {
@@ -104,7 +104,7 @@ public class ConsoleView {
 		default:
 			break;
 		}
-		keyboard.close();
+		
 	}
 	private void queryMethods() {
 		System.out.println("The following items are the list of all queries");
