@@ -12,7 +12,33 @@ public class ConsoleView {
 	}
 
 	public void menu() {
-		
+		Scanner keyboard =new Scanner(System.in);
+		System.out.println("You can chose from the following menu");
+		System.out.println("1) For changing the PaymentInfo of a bill//r//n"
+				+ "2) List all bills//r//n"
+				+ "3) List all flats//r//n"
+				+ "4) For executing queries");
+		System.out.println("Please enter a number from list above(press enter at the end) :");
+		String a = keyboard.next();
+		switch (a) {
+		case "1":
+			paymentInfo();
+			break;
+		case "2":
+			listAllBills();
+			break;
+		case "3":
+			listAllFlats();
+			break;
+		case "4":
+			queryMethods();
+			query();
+			break;
+
+		default:
+			break;
+		}
+		keyboard.close();
 	}
 	
 	public void paymentInfo() {
@@ -29,7 +55,8 @@ public class ConsoleView {
 
 	public void query() {
 		Scanner keyboard =new Scanner(System.in);
-		String query = "";
+		System.out.println("Please select a query :");
+		String query = keyboard.next();
 		switch (query) {
 		case "1":
 			totalUnpaidBill();
@@ -71,6 +98,17 @@ public class ConsoleView {
 			break;
 		}
 		keyboard.close();
+	}
+	private void queryMethods() {
+		System.out.println("The following items are the list of all queries");
+		System.out.println("1) Total amount of unpaid bills"
+				+"2) Total amount of unpaid bills of a certain bill type"
+				+"3) Total bill amount of a certain floor"
+				+"4) List of the unpaid bills with the information of the remaining time (in days) before their deadlines"
+				+"5) Total amount and number of paid bills before a certain date"
+				+"6) Total amount and number of unpaid bills of a certain type that passed deadline"
+				+"7) Average total amount of bills of N room flats"
+				+"8) Average total amount of bills of flats with square meter greater than N");
 	}
 	private void totalUnpaidBill() {
 		double total = bquery.totalUnpaidBill();
