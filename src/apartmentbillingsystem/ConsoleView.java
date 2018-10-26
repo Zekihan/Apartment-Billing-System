@@ -86,7 +86,6 @@ public class ConsoleView {
 		case "5":
 			System.out.println("Please enter a date(At the end press enter and date format shoul be (yyyy-MM-dd) :");
 			String date = keyboard.next();
-			System.out.println(date);
 			paidBefore(date);
 			break;
 		case "6":

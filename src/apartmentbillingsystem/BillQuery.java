@@ -59,7 +59,7 @@ public class BillQuery {
 		for (int i = 0; i < bills.size(); i++) {
 			String update = bills.get(i).getLastUpdateDate();
 			int diff = timeDiff(update,date);
-			if (diff<0) {
+			if (diff>0) {
 				aa[0] += bills.get(i).getAmount();
 				aa[1]++;
 			}
@@ -83,7 +83,6 @@ public class BillQuery {
 		return aa;
 	}
 	public double avgRoomBill(int room) {
-		ArrayList<Bill> bills = getBills();
 		double total = 0;
 		int number=0;
 		Flat[][] apartment = a.getApartment();
@@ -103,7 +102,6 @@ public class BillQuery {
 		return total/number;
 	}
 	public double avgSQBill(int sq) {
-		ArrayList<Bill> bills = getBills();
 		double total = 0;
 		int number=0;
 		Flat[][] apartment = a.getApartment();
