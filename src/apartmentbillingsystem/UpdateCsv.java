@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
 
 public class UpdateCsv {
@@ -40,5 +41,13 @@ public class UpdateCsv {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("UpdateCsv [lineArr=").append(Arrays.toString(lineArr)).append(", oldFileName=")
+				.append(oldFileName).append("]");
+		return builder.toString();
 	}
 }

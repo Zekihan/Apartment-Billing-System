@@ -47,4 +47,12 @@ public class StoredDate {
 	public String getDate() {
 		return date;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("StoredDate [date=").append(date).append("]");
+		return builder.toString();
+	}
+	
 }

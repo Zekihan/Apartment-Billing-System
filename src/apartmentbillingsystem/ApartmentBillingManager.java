@@ -2,6 +2,7 @@ package apartmentbillingsystem;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 
 public class ApartmentBillingManager {
@@ -19,18 +20,8 @@ public class ApartmentBillingManager {
 		StoredDate storedDate = new StoredDate();
 		String date = storedDate.readDate();
 		createApartment(date);
-		ConsoleView view = new ConsoleView(getApartment());
-		boolean done = false;
-		while(!done) {
-			String[] paramsToChangePaymentInfo = view.menu();
-			if(paramsToChangePaymentInfo != null) {
-				int billId = Integer.parseInt(paramsToChangePaymentInfo[0]);
-				boolean isPaid = Boolean.parseBoolean(paramsToChangePaymentInfo[1]);
-				changePaymentInfo(billId, isPaid);
-				view = new ConsoleView(getApartment());
-			}
-			view.menu();
-		}
+		startConsole();
+		
 	}
 
 	public Apartment getApartment() {
@@ -58,8 +49,24 @@ public class ApartmentBillingManager {
 		}
 		this.apartment = new Apartment(apartmentArr);
 	}
+	
+	private void startConsole() {
+		ConsoleView view = new ConsoleView(getApartment());
+		while(true) {
+			String[] paramsToChangePaymentInfo = view.menu();
+			if(paramsToChangePaymentInfo != null) {
+				int billId = Integer.parseInt(paramsToChangePaymentInfo[0]);
+				boolean isPaid = Boolean.parseBoolean(paramsToChangePaymentInfo[1]);
+				changePaymentInfo(billId, isPaid);
+				view = new ConsoleView(getApartment());
+			}
+			view.menu();
+		}
+	}
+	
+	
 
-	public void changePaymentInfo(int billId, boolean isPaid) {
+	private void changePaymentInfo(int billId, boolean isPaid) {
 		for(int i = 0; i < billInputArr.length; i++) {
 			if(Integer.parseInt(billInputArr[i][0]) == billId) {
 				String date = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
@@ -89,4 +96,14 @@ public class ApartmentBillingManager {
 		}
 		return billList;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("ApartmentBillingManager [lastUpdateDate=").append(lastUpdateDate).append(", billInputArr=")
+				.append(Arrays.toString(billInputArr)).append(", flatInputArr=").append(Arrays.toString(flatInputArr))
+				.append(", apartment=").append(apartment).append("]");
+		return builder.toString();
+	}
+	
 }

@@ -49,26 +49,19 @@ public class ConsoleView {
 		default:
 			break;
 		}
+		System.out.println("------------------------------------------------------------------------------------------------------------------");
 		return null;
 	}
 	
-	public void listAllBills() {
-		Flat[][] apartment = a.getApartment();
-		for (int i = 0; i < a.getNumberOfFloors(); i++) {
-			for (int j = 0; j < a.getNumberOfFlats(); j++) {
-				for (int k = 0; k < apartment[i][j].getBillList().size(); k++) {
-					System.out.println(apartment[i][j].getBillList().get(k));
-				}
-			}	
+	private void listAllBills() {
+		for (Bill bill: a.getAllBills()) {
+			System.out.println(bill.toString());
 		}
 	}
 
-	public void listAllFlats() {
-		Flat[][] apartment = a.getApartment();
-		for (int i = 0; i < a.getNumberOfFloors(); i++) {
-			for (int j = 0; j < a.getNumberOfFlats(); j++) {
-				System.out.println(apartment[i][j]);
-			}		
+	private void listAllFlats() {
+		for (Flat flat: a.getAllFlats()) {
+			System.out.println(flat.toString());
 		}
 	}
 
@@ -173,4 +166,5 @@ public class ConsoleView {
 		double avg = bquery.avgSQBill(sq);
 		System.out.println("Average total amount of bills of flats with square meter greater than "+ sq +" is "+String.format("%.2f",avg));
 	}
+	
 }

@@ -1,5 +1,8 @@
 package apartmentbillingsystem;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Apartment {
 
 	private Flat[][] apartment ;
@@ -28,17 +31,37 @@ public class Apartment {
 	public int getNumberOfFlats() {
 		return numberOfFlats;
 	}
+	
+	public ArrayList<Bill> getAllBills() {
+		ArrayList<Bill> billList = new ArrayList<Bill>();
+		for (int i = 0; i < numberOfFloors; i++) {
+			for (int j = 0; j < numberOfFlats; j++) {
+				for (int k = 0; k < apartment[i][j].getBillList().size(); k++) {
+					billList.add(apartment[i][j].getBillList().get(k));
+				}
+			}	
+		}
+		return billList;
+	}
+	
+	public ArrayList<Flat> getAllFlats() {
+		ArrayList<Flat> flatList = new ArrayList<Flat>();
+		for (int i = 0; i < numberOfFloors; i++) {
+			for (int j = 0; j < numberOfFlats; j++) {
+				flatList.add(apartment[i][j]);
+			}		
+		}
+		return flatList;
+	}
 
 	@Override
 	public String toString() {
-		String printable = "";
-		for (int i = 0;i<numberOfFloors;i++) {
-			for (int j = 0;j<numberOfFlats;j++) {
-				printable += apartment[i][j];
-			}
-		}
-		return printable;
+		StringBuilder builder = new StringBuilder();
+		builder.append("Apartment [apartment=").append(Arrays.toString(apartment)).append(", numberOfFloors=")
+				.append(numberOfFloors).append(", numberOfFlats=").append(numberOfFlats).append("]");
+		return builder.toString();
 	}
+
 	
 	
 }

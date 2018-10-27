@@ -46,4 +46,12 @@ public class ReadCsv {
 			String[][] lineArr = lineList.toArray(new String[lineList.size()][lineList.get(0).length]);
 			return lineArr;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("ReadCsv [fileName=").append(fileName).append("]");
+		return builder.toString();
+	}
+	
 }

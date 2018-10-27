@@ -48,7 +48,7 @@ public class Flat {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Flat [flatId=").append(flatId).append(", floorNo=").append(floorNo).append(", flatNo=")
 				.append(flatNo).append(", noOfRooms=").append(noOfRooms).append(", sqrMeter=").append(sqrMeter)
-				.append(", billList=").append(billList).append("]");
+				.append("]");
 		return builder.toString();
 	}
 }
