@@ -28,7 +28,7 @@ public class ConsoleView {
 		case "1":
 			System.out.println("Please enter ID of the bill that you want change payment info (At the end press enter) :");
 			String billId = keyboard.next();
-			System.out.println("Enter payment info (True or False) (At the end press enter) :");
+			System.out.println("Enter payment info (true or false) :");
 			String isPaid = keyboard.next();
 			String[] params = {billId, isPaid};
 			return params;

@@ -47,7 +47,7 @@ public class BillQuery {
 		ArrayList<Bill> bills = getUnpaid(getBills());
 		for (int i = 0; i < bills.size(); i++) {
 			String deadline = bills.get(i).getDeadlineDate();
-			int rem = timeDiff(deadline,new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime()));
+			int rem = timeDiff(new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime()),deadline);
 			if (rem>=0) {
 				System.out.println(bills.get(i).toString()+" Remaining Time :"+rem);
 			}
@@ -78,7 +78,7 @@ public class BillQuery {
 		ArrayList<Bill> bills = getUnpaidType(getBills(),type);
 		for (int i = 0; i < bills.size(); i++) {
 			String deadline = bills.get(i).getDeadlineDate();
-			int rem = timeDiff(deadline,new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime()));
+			int rem = timeDiff(new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime()),deadline);
 			if (rem<0) {
 				aa[0] += bills.get(i).getAmount();
 				aa[1]++;
@@ -110,7 +110,7 @@ public class BillQuery {
 		Flat[][] apartment = a.getApartment();
 		for (int i = 0; i < a.getNumberOfFloors(); i++) {
 			for (int j = 0; j < a.getNumberOfFlats(); j++) {
-				if (apartment[i][j].getSqrMeter()==(sq)) {
+				if (apartment[i][j].getSqrMeter()>(sq)) {
 					for (int k = 0; k < apartment[i][j].getBillList().size(); k++) {
 						total += apartment[i][j].getBillList().get(k).getAmount();
 						number++;
