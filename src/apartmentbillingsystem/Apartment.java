@@ -34,12 +34,8 @@ public class Apartment {
 	
 	public ArrayList<Bill> getAllBills() {
 		ArrayList<Bill> billList = new ArrayList<Bill>();
-		for (int i = 0; i < numberOfFloors; i++) {
-			for (int j = 0; j < numberOfFlats; j++) {
-				for (int k = 0; k < apartment[i][j].getBillList().size(); k++) {
-					billList.add(apartment[i][j].getBillList().get(k));
-				}
-			}	
+		for(Flat flat: getAllFlats()) {
+			billList.addAll(flat.getBillList());
 		}
 		return billList;
 	}
