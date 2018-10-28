@@ -166,5 +166,12 @@ public class ConsoleView {
 		double avg = bquery.avgSQBill(sq);
 		System.out.println("Average total amount of bills of flats with square meter greater than "+ sq +" is "+String.format("%.2f",avg));
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("ConsoleView [a=").append(a).append(", bquery=").append(bquery).append("]");
+		return builder.toString();
+	}
 	
 }

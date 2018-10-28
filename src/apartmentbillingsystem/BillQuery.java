@@ -195,5 +195,12 @@ public class BillQuery {
 		}
 		return retFloor;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("BillQuery [a=").append(a).append("]");
+		return builder.toString();
+	}
 	
 }
