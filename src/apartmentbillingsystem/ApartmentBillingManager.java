@@ -11,9 +11,11 @@ public class ApartmentBillingManager {
 	private String[][] billInputArr;
 	private String[][] flatInputArr;
 	private Apartment apartment;
+    ReadCsv billInput;
+    ReadCsv flatInput;
 	
 	public ApartmentBillingManager() {
-		
+
 	}
 	
 	public void start() {
@@ -30,10 +32,11 @@ public class ApartmentBillingManager {
 	
 	private void createApartment(String lastUpdateDate) {
 		this.lastUpdateDate = lastUpdateDate;
-		ReadCsv billInput = new ReadCsv("BillingInfo-" + lastUpdateDate + ".csv");
-		ReadCsv flatInput = new ReadCsv("ApartmentInfo.csv");
-		this.billInputArr = billInput.readCsv();
-		this.flatInputArr = flatInput.readCsv();
+
+        billInput = new ReadCsv("BillingInfo-" + lastUpdateDate + ".csv");
+        flatInput = new ReadCsv("ApartmentInfo.csv");
+		billInputArr = billInput.readCsv();
+		flatInputArr = flatInput.readCsv();
 		
 		int flatNum =Integer.parseInt(flatInputArr[flatInputArr.length-1][0]) ;
 		int floorNum = Integer.parseInt(flatInputArr[flatInputArr.length-1][1]);
@@ -63,8 +66,6 @@ public class ApartmentBillingManager {
 			view.menu();
 		}
 	}
-	
-	
 
 	private void changePaymentInfo(int billId, boolean isPaid) {
 		for(int i = 0; i < billInputArr.length; i++) {
@@ -81,8 +82,11 @@ public class ApartmentBillingManager {
 				up.updateCsv();
 				StoredDate storeDate = new StoredDate();
 				storeDate.updateDate(date);
-
 				createApartment(date);
+
+				billInputArr = billInput.readCsv();
+				flatInputArr = flatInput.readCsv();
+
 			}
 		}
 	}

@@ -42,9 +42,8 @@ public class ReadCsv {
 				System.out.println("Exception: " + e.getMessage());
 				System.exit(-1);
 			}
-			
-			String[][] lineArr = lineList.toArray(new String[lineList.size()][lineList.get(0).length]);
-			return lineArr;
+
+		return lineList.toArray(new String[lineList.size()][lineList.get(0).length]);
 	}
 
 	@Override
