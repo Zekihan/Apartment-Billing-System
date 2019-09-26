@@ -1,6 +1,4 @@
-# G42_CENG211_HW1
+# Apartment Billing System
 İYTE CENG 211 Programming Fundamentals HW1
 
 (Object Oriented Programming)
-
-Apartment Billing System
