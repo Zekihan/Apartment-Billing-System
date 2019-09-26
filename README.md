@@ -2,4 +2,4 @@
 İYTE CENG 211 Programming Fundamentals HW1
 Object Oriented Programming
 
-APARTMENT BILLING SYSTEM
+Apartment Billing System
